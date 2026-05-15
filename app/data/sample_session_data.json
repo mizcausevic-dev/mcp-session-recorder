@@ -1,0 +1,223 @@
+{
+  "catalog": {
+    "name": "Northstar MCP Session Recorder",
+    "owner": "Kinetic Gain Operator Systems",
+    "publicationUrl": "http://127.0.0.1:5018"
+  },
+  "sessions": [
+    {
+      "sessionId": "mcp-sess-1042",
+      "serverName": "Growth Ops MCP",
+      "serverOwner": "Revenue Platform",
+      "operator": "Mia Chen",
+      "startedAt": "2026-05-15T08:14:00Z",
+      "durationSeconds": 812,
+      "authModel": "api-key",
+      "environment": "production",
+      "riskScore": 92,
+      "verdict": "review",
+      "humanApproval": "required",
+      "approvalLatencyMinutes": 18,
+      "evidenceCoverage": 54,
+      "citationCoverage": 61,
+      "toolCalls": [
+        {
+          "toolId": "campaign-pause",
+          "name": "Campaign Pause",
+          "category": "state-change",
+          "destructive": true,
+          "approved": true,
+          "citations": 1,
+          "evidenceArtifacts": 2
+        },
+        {
+          "toolId": "lead-delete",
+          "name": "Lead Delete",
+          "category": "destructive",
+          "destructive": true,
+          "approved": false,
+          "citations": 0,
+          "evidenceArtifacts": 1
+        }
+      ],
+      "approvals": [
+        {
+          "step": "review-requested",
+          "owner": "Revenue Operations",
+          "status": "completed",
+          "timestamp": "2026-05-15T08:22:00Z"
+        },
+        {
+          "step": "security-escalation",
+          "owner": "Platform Security",
+          "status": "open",
+          "timestamp": "2026-05-15T08:31:00Z"
+        }
+      ],
+      "evidenceTrail": [
+        "Prompt transcript stored with redaction notes.",
+        "Approval request payload retained in review ledger.",
+        "Tool output contains one citation gap and one unsigned artifact."
+      ],
+      "nextAction": "Contain the destructive path until the missing approval and citation gap are resolved."
+    },
+    {
+      "sessionId": "mcp-sess-1038",
+      "serverName": "Finance Close MCP",
+      "serverOwner": "Finance Systems",
+      "operator": "Julian Park",
+      "startedAt": "2026-05-15T07:02:00Z",
+      "durationSeconds": 640,
+      "authModel": "oidc",
+      "environment": "production",
+      "riskScore": 66,
+      "verdict": "watch",
+      "humanApproval": "completed",
+      "approvalLatencyMinutes": 6,
+      "evidenceCoverage": 83,
+      "citationCoverage": 79,
+      "toolCalls": [
+        {
+          "toolId": "close-checklist-sync",
+          "name": "Close Checklist Sync",
+          "category": "workflow",
+          "destructive": false,
+          "approved": true,
+          "citations": 2,
+          "evidenceArtifacts": 3
+        },
+        {
+          "toolId": "journal-lock",
+          "name": "Journal Lock",
+          "category": "state-change",
+          "destructive": true,
+          "approved": true,
+          "citations": 1,
+          "evidenceArtifacts": 2
+        }
+      ],
+      "approvals": [
+        {
+          "step": "finance-review",
+          "owner": "Controller",
+          "status": "completed",
+          "timestamp": "2026-05-15T07:08:00Z"
+        }
+      ],
+      "evidenceTrail": [
+        "Approval bundle retained with reviewer identity.",
+        "Journal lock action mapped to close runbook step.",
+        "All tool outputs retained with one partial citation chain."
+      ],
+      "nextAction": "Refresh citation discipline for state-changing actions before the next close window."
+    },
+    {
+      "sessionId": "mcp-sess-1033",
+      "serverName": "Support Copilot",
+      "serverOwner": "Customer Operations",
+      "operator": "Rina Solis",
+      "startedAt": "2026-05-15T05:48:00Z",
+      "durationSeconds": 534,
+      "authModel": "workload-jwt",
+      "environment": "staging",
+      "riskScore": 48,
+      "verdict": "stable",
+      "humanApproval": "not-needed",
+      "approvalLatencyMinutes": 0,
+      "evidenceCoverage": 96,
+      "citationCoverage": 93,
+      "toolCalls": [
+        {
+          "toolId": "refund-draft",
+          "name": "Refund Draft",
+          "category": "drafting",
+          "destructive": false,
+          "approved": true,
+          "citations": 3,
+          "evidenceArtifacts": 4
+        },
+        {
+          "toolId": "case-summary",
+          "name": "Case Summary",
+          "category": "analysis",
+          "destructive": false,
+          "approved": true,
+          "citations": 2,
+          "evidenceArtifacts": 3
+        }
+      ],
+      "approvals": [],
+      "evidenceTrail": [
+        "Session transcript stored with deterministic replay markers.",
+        "Tool outputs signed and mapped to customer case IDs.",
+        "No destructive path invoked in this run."
+      ],
+      "nextAction": "Keep the current recorder policy and use this lane as the reference baseline."
+    },
+    {
+      "sessionId": "mcp-sess-1029",
+      "serverName": "Analytics Fabric",
+      "serverOwner": "Data Platform",
+      "operator": "Sanjay Iyer",
+      "startedAt": "2026-05-14T23:16:00Z",
+      "durationSeconds": 1184,
+      "authModel": "workload-jwt",
+      "environment": "production",
+      "riskScore": 73,
+      "verdict": "watch",
+      "humanApproval": "completed",
+      "approvalLatencyMinutes": 11,
+      "evidenceCoverage": 88,
+      "citationCoverage": 76,
+      "toolCalls": [
+        {
+          "toolId": "warehouse-refresh",
+          "name": "Warehouse Refresh",
+          "category": "state-change",
+          "destructive": true,
+          "approved": true,
+          "citations": 1,
+          "evidenceArtifacts": 2
+        },
+        {
+          "toolId": "masking-policy-update",
+          "name": "Masking Policy Update",
+          "category": "governance",
+          "destructive": true,
+          "approved": true,
+          "citations": 1,
+          "evidenceArtifacts": 2
+        },
+        {
+          "toolId": "query-runner",
+          "name": "Query Runner",
+          "category": "analysis",
+          "destructive": false,
+          "approved": true,
+          "citations": 2,
+          "evidenceArtifacts": 3
+        }
+      ],
+      "approvals": [
+        {
+          "step": "data-governance-review",
+          "owner": "Data Governance",
+          "status": "completed",
+          "timestamp": "2026-05-14T23:21:00Z"
+        },
+        {
+          "step": "platform-acknowledgement",
+          "owner": "Platform Reliability",
+          "status": "completed",
+          "timestamp": "2026-05-14T23:27:00Z"
+        }
+      ],
+      "evidenceTrail": [
+        "Replay tokens retained for every state-changing tool call.",
+        "Approval steps linked to change ticket and governance ledger.",
+        "Citation coverage is acceptable but still thin for masking-policy changes."
+      ],
+      "nextAction": "Increase citation depth for policy mutations before widening operator access."
+    }
+  ]
+}
