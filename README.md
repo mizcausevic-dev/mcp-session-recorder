@@ -22,10 +22,10 @@ They struggle much more with the harder questions:
 
 ## Screenshots
 
-![Overview](./screenshots/01-overview.svg)
-![Sessions](./screenshots/02-sessions.svg)
-![Approvals](./screenshots/03-approvals.svg)
-![Replay](./screenshots/04-replay.svg)
+![Overview](./screenshots/01-overview.png)
+![Sessions](./screenshots/02-sessions.png)
+![Approvals](./screenshots/03-approvals.png)
+![Replay](./screenshots/04-replay.png)
 
 ## What it includes
 
@@ -33,8 +33,10 @@ They struggle much more with the harder questions:
 - sample MCP session inventory across revenue, finance, support, and analytics lanes
 - session ranking for replay priority, approval pressure, and destructive exposure
 - approval board for review ownership and escalation state
+- owner-scoped session sharing model with explicit `sharedWith` visibility lanes
+- replay surface with play, pause, seek, and playback-speed controls
 - recollection API for pulling the most relevant prior sessions back into operator context
-- SVG proof assets generated from the same service state
+- PNG proof assets captured from the live app routes
 - unit tests, smoke checks, and GitHub Actions CI
 
 ## Local run
@@ -77,6 +79,8 @@ $env:PORT = "5022"
 - `GET /api/sessions/{session_id}`
 - `GET /api/approvals`
 - `GET /api/replay`
+- `GET /api/shares`
+- `GET /api/auth-posture`
 - `GET /api/sample`
 - `POST /api/recollect`
 

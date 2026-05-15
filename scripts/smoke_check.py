@@ -24,6 +24,8 @@ def main() -> None:
         ("/api/sessions", "GET"),
         ("/api/approvals", "GET"),
         ("/api/replay", "GET"),
+        ("/api/shares", "GET"),
+        ("/api/auth-posture", "GET"),
         ("/api/sample", "GET"),
     ]
     for path, method in checks:

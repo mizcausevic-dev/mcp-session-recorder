@@ -26,6 +26,14 @@ class MCPSessionRecorderTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["serverName"], "Growth Ops MCP")
 
+    def test_share_matrix_api(self) -> None:
+        client = TestClient(app)
+        response = client.get("/api/shares")
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertGreaterEqual(payload[0]["sharedCount"], 0)
+        self.assertIn("visibility", payload[0])
+
 
 if __name__ == "__main__":
     unittest.main()

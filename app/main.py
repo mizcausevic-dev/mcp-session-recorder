@@ -83,6 +83,16 @@ def replay_api() -> list[dict]:
     return SERVICE.replay_board()
 
 
+@app.get("/api/shares")
+def shares_api() -> list[dict]:
+    return SERVICE.share_matrix()
+
+
+@app.get("/api/auth-posture")
+def auth_posture_api() -> dict:
+    return SERVICE.auth_posture()
+
+
 @app.get("/api/sample")
 def sample() -> dict:
     return SERVICE.sample_payload()

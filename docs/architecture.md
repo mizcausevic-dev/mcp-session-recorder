@@ -28,6 +28,8 @@ Each session keeps the fields an operator or reviewer would actually need later:
 
 - session identity
 - server identity and owner
+- owner email and session visibility
+- shared-with collaborator lanes
 - operator identity
 - auth model and environment
 - risk score and verdict
@@ -49,6 +51,15 @@ The current proof surface exposes four main lanes:
 - `approvals` for human signoff and escalation history
 - `replay` for evidence completeness and replay readiness
 
+The replay lane now also includes:
+
+- play and pause controls
+- temporal seeking
+- playback speed changes
+- dynamic event filtering based on the current replay cursor
+
+Those controls are intentionally client-side and local-first. They make the audit story visible without pretending this sample repo is already a cloud multi-user product.
+
 ## Why it matters
 
 Many MCP examples stop at policy before execution or logs after execution.
@@ -58,6 +69,7 @@ Real operating teams need the bridge between those two:
 - what happened
 - who approved it
 - what evidence was captured
+- who else was allowed to view the session
 - what still needs intervention
 
 That is the layer this project is modeling.

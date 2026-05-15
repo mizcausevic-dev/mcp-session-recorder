@@ -23,6 +23,8 @@ The design philosophy is simple:
 
 This is also why the repo keeps the surface intentionally small. It does not try to become a full observability platform. It is a recorder with enough shape to answer the most important review questions quickly.
 
+As the design matured, one additional issue became impossible to ignore: reviewability is not only about reconstruction, it is also about controlled visibility. Sessions often need to be shared with a security reviewer, a platform lead, or a finance approver without turning the entire recorder into an open directory. That is why the model now carries owner-scoped visibility and explicit share lanes, even in this local-first demo.
+
 The sample sessions reflect the kinds of pressure that show up in real environments:
 
 - destructive requests without complete approval

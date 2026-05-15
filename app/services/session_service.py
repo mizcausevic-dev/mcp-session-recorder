@@ -25,6 +25,8 @@ class SessionRecorderService:
             for tool in session["toolCalls"]
             if tool["destructive"]
         )
+        shared_sessions = sum(1 for session in self.sessions if session["sharedWith"])
+        public_sessions = sum(1 for session in self.sessions if session["visibility"] == "public")
         return {
             "sessionCount": len(self.sessions),
             "reviewSessions": review_sessions,
@@ -32,6 +34,8 @@ class SessionRecorderService:
             "stableSessions": stable_sessions,
             "approvalRequiredSessions": approval_required,
             "destructiveToolCalls": destructive_calls,
+            "sharedSessions": shared_sessions,
+            "publicSessions": public_sessions,
             "averageRiskScore": round(mean(session["riskScore"] for session in self.sessions), 1),
             "averageEvidenceCoverage": round(mean(session["evidenceCoverage"] for session in self.sessions), 1),
             "averageCitationCoverage": round(mean(session["citationCoverage"] for session in self.sessions), 1),
@@ -91,6 +95,34 @@ class SessionRecorderService:
             )
         return rows
 
+    def share_matrix(self) -> list[dict]:
+        return [
+            {
+                "sessionId": session["sessionId"],
+                "serverName": session["serverName"],
+                "ownerEmail": session["ownerEmail"],
+                "visibility": session["visibility"],
+                "sharedCount": len(session["sharedWith"]),
+                "sharedWith": session["sharedWith"],
+            }
+            for session in self.sessions_board()
+        ]
+
+    def auth_posture(self) -> dict:
+        private_sessions = [session for session in self.sessions if session["visibility"] == "private"]
+        shared_sessions = [session for session in self.sessions if session["visibility"] == "shared"]
+        public_sessions = [session for session in self.sessions if session["visibility"] == "public"]
+        return {
+            "privateSessions": len(private_sessions),
+            "sharedSessions": len(shared_sessions),
+            "publicSessions": len(public_sessions),
+            "ownerScopedSessions": len(self.sessions),
+            "leadRecommendation": (
+                "Treat destructive sessions as owner-scoped by default, and use explicit share grants "
+                "for audit or incident-review collaborators."
+            ),
+        }
+
     def sample_payload(self) -> dict:
         sessions = self.sessions_board()
         return {
@@ -103,6 +135,7 @@ class SessionRecorderService:
                 "nextAction": sessions[0]["nextAction"],
             },
             "openApprovals": [row for row in self.approval_board() if row["status"] == "open"],
+            "shareMatrix": self.share_matrix(),
         }
 
     def recollection(self, prompt: str) -> dict:

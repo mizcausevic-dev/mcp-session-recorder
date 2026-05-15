@@ -2,6 +2,18 @@
 
 All notable changes to this project are documented here.
 
+## [1.1.0] - 2026-05-15
+
+### Enhanced
+- Reworked the UI with a stronger elegant-dark control-room presentation inspired by later visual exploration work.
+- Added owner-scoped visibility and explicit `sharedWith` collaborator lanes to the sample session model.
+- Added replay controls for play, pause, seek, and playback-speed changes so the replay surface behaves more like an audit console.
+- Expanded the repo proof layer with live-route PNG captures instead of lighter placeholder-style visuals.
+
+### Why this mattered
+- The earlier build explained the recorder well enough, but it still undersold the product in screenshots and left the collaboration story too implicit.
+- This pass made the repo more legible as a serious multi-operator governance surface without pretending the local demo is already a production Firebase system.
+
 ## [1.0.0] - 2026-05-15
 
 ### Released

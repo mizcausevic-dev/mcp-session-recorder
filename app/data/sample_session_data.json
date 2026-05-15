@@ -9,6 +9,13 @@
       "sessionId": "mcp-sess-1042",
       "serverName": "Growth Ops MCP",
       "serverOwner": "Revenue Platform",
+      "ownerId": "op_mia_chen",
+      "ownerEmail": "mia.chen@kineticgain.com",
+      "visibility": "private",
+      "sharedWith": [
+        "sec-review@kineticgain.com",
+        "revops-audit@kineticgain.com"
+      ],
       "operator": "Mia Chen",
       "startedAt": "2026-05-15T08:14:00Z",
       "durationSeconds": 812,
@@ -40,6 +47,43 @@
           "evidenceArtifacts": 1
         }
       ],
+      "replayEvents": [
+        {
+          "offsetSeconds": 0,
+          "type": "assistant",
+          "label": "Session initialized",
+          "detail": "Operator opened the growth-ops server lane and loaded the destructive routing playbook.",
+          "severity": "info"
+        },
+        {
+          "offsetSeconds": 74,
+          "type": "tool",
+          "label": "Campaign Pause",
+          "detail": "Paused the outbound campaign after a segmentation drift alert.",
+          "severity": "watch"
+        },
+        {
+          "offsetSeconds": 219,
+          "type": "approval",
+          "label": "Review requested",
+          "detail": "Revenue Operations acknowledged the state-changing action and forwarded it to Platform Security.",
+          "severity": "stable"
+        },
+        {
+          "offsetSeconds": 431,
+          "type": "tool",
+          "label": "Lead Delete",
+          "detail": "Unsigned destructive request was attempted without a completed security approval chain.",
+          "severity": "review"
+        },
+        {
+          "offsetSeconds": 612,
+          "type": "assistant",
+          "label": "Containment recommendation",
+          "detail": "Recorder flagged missing citations and incomplete approval evidence for destructive exposure.",
+          "severity": "review"
+        }
+      ],
       "approvals": [
         {
           "step": "review-requested",
@@ -65,6 +109,12 @@
       "sessionId": "mcp-sess-1038",
       "serverName": "Finance Close MCP",
       "serverOwner": "Finance Systems",
+      "ownerId": "op_julian_park",
+      "ownerEmail": "julian.park@kineticgain.com",
+      "visibility": "shared",
+      "sharedWith": [
+        "controller-audit@kineticgain.com"
+      ],
       "operator": "Julian Park",
       "startedAt": "2026-05-15T07:02:00Z",
       "durationSeconds": 640,
@@ -96,6 +146,36 @@
           "evidenceArtifacts": 2
         }
       ],
+      "replayEvents": [
+        {
+          "offsetSeconds": 0,
+          "type": "assistant",
+          "label": "Close lane initialized",
+          "detail": "Recorder opened the finance close context with the current approval template.",
+          "severity": "info"
+        },
+        {
+          "offsetSeconds": 112,
+          "type": "tool",
+          "label": "Close Checklist Sync",
+          "detail": "Checklist state synchronized to the monthly close workflow.",
+          "severity": "stable"
+        },
+        {
+          "offsetSeconds": 256,
+          "type": "approval",
+          "label": "Finance review completed",
+          "detail": "Controller signoff was captured before the journal lock step executed.",
+          "severity": "stable"
+        },
+        {
+          "offsetSeconds": 392,
+          "type": "tool",
+          "label": "Journal Lock",
+          "detail": "Journal lock completed with one partially cited justification chain.",
+          "severity": "watch"
+        }
+      ],
       "approvals": [
         {
           "step": "finance-review",
@@ -115,6 +195,10 @@
       "sessionId": "mcp-sess-1033",
       "serverName": "Support Copilot",
       "serverOwner": "Customer Operations",
+      "ownerId": "op_rina_solis",
+      "ownerEmail": "rina.solis@kineticgain.com",
+      "visibility": "public",
+      "sharedWith": [],
       "operator": "Rina Solis",
       "startedAt": "2026-05-15T05:48:00Z",
       "durationSeconds": 534,
@@ -146,6 +230,29 @@
           "evidenceArtifacts": 3
         }
       ],
+      "replayEvents": [
+        {
+          "offsetSeconds": 0,
+          "type": "assistant",
+          "label": "Support session opened",
+          "detail": "Recorder attached the customer case context and refund policy pack.",
+          "severity": "info"
+        },
+        {
+          "offsetSeconds": 96,
+          "type": "tool",
+          "label": "Refund Draft",
+          "detail": "Draft refund proposal generated with three citations and preserved artifacts.",
+          "severity": "stable"
+        },
+        {
+          "offsetSeconds": 214,
+          "type": "assistant",
+          "label": "Case Summary",
+          "detail": "Final session summary remained grounded in the stored evidence bundle.",
+          "severity": "stable"
+        }
+      ],
       "approvals": [],
       "evidenceTrail": [
         "Session transcript stored with deterministic replay markers.",
@@ -158,6 +265,13 @@
       "sessionId": "mcp-sess-1029",
       "serverName": "Analytics Fabric",
       "serverOwner": "Data Platform",
+      "ownerId": "op_sanjay_iyer",
+      "ownerEmail": "sanjay.iyer@kineticgain.com",
+      "visibility": "shared",
+      "sharedWith": [
+        "data-governance@kineticgain.com",
+        "platform-reliability@kineticgain.com"
+      ],
       "operator": "Sanjay Iyer",
       "startedAt": "2026-05-14T23:16:00Z",
       "durationSeconds": 1184,
@@ -196,6 +310,43 @@
           "approved": true,
           "citations": 2,
           "evidenceArtifacts": 3
+        }
+      ],
+      "replayEvents": [
+        {
+          "offsetSeconds": 0,
+          "type": "assistant",
+          "label": "Analytics session initialized",
+          "detail": "Recorder pulled the current warehouse and masking-policy context into the session envelope.",
+          "severity": "info"
+        },
+        {
+          "offsetSeconds": 138,
+          "type": "tool",
+          "label": "Warehouse Refresh",
+          "detail": "Warehouse refresh executed after data-governance acknowledgement.",
+          "severity": "stable"
+        },
+        {
+          "offsetSeconds": 372,
+          "type": "approval",
+          "label": "Platform acknowledgement",
+          "detail": "Platform Reliability confirmed dependency timing before policy mutation.",
+          "severity": "stable"
+        },
+        {
+          "offsetSeconds": 528,
+          "type": "tool",
+          "label": "Masking Policy Update",
+          "detail": "Policy mutation completed with acceptable evidence depth but thin citation density.",
+          "severity": "watch"
+        },
+        {
+          "offsetSeconds": 816,
+          "type": "assistant",
+          "label": "Replay note generated",
+          "detail": "Recorder marked the session as usable but recommended higher citation density before widening access.",
+          "severity": "watch"
         }
       ],
       "approvals": [
