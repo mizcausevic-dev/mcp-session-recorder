@@ -42,7 +42,7 @@ They struggle much more with the harder questions:
 ## Local run
 
 ```powershell
-Set-Location "C:\Users\chaus\dev\repos\mcp-session-recorder"
+cd mcp-session-recorder
 py -3.11 -m venv .venv
 .\.venv\Scripts\pip.exe install -r requirements.txt
 .\.venv\Scripts\python.exe -m app.main
